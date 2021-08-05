@@ -13,7 +13,7 @@ UNKNOWN = 3
 #Disable warnings https
 urllib3.disable_warnings()
 
-class AzureAppHealthChecks:
+class WebAppHealthChecks:
     def __init__(self, url):
         
         #initial
@@ -24,7 +24,7 @@ class AzureAppHealthChecks:
             
         #Add tags to the URL
         url = self.url
-        
+        import pdb; pdb.set_trace()
         # requests doc http://docs.python-requests.org/en/v0.10.7/user/quickstart/#custom-headers
         r = requests.get(url=url, verify=False)
         
@@ -34,17 +34,18 @@ class AzureAppHealthChecks:
 
         #Vars
         retrcode = OK
-		
-        #Create tuple with json and status code
-        azure_health_status = self.get_status_data()
+		        #Create tuple with json and status code
+        webapp_health_status = self.get_status_data()        
         
+        import pdb; pdb.set_trace()
+             
         msgdata = ''
-        msgerror = '{:>10}'.format(azure_health_status[0]['entries']['smartAccess_health_check']['description'])
+        msgerror = '{:>10}'.format(webapp_health_status[0]['entries']['smartAccess_health_check']['description'])
         retrperfdata = ''
         retrmsg = ''
-        import pdb; pdb.set_trace()
+        
         #Validate Data
-        if azure_health_status[0]['status'] != 'Healthy':
+        if webapp_health_status[0]['status'] != 'Healthy':
             retrcode = CRITICAL
 
         msgerror += msgdata

@@ -3,7 +3,7 @@
 
 # Import required libs
 from .plugin_check import curlCheck
-from .azure_web_app_health_check import AzureAppHealthChecks
+from .web_app_health_check import WebAppHealthChecks
 import argparse
 import sys
 
@@ -54,11 +54,11 @@ def cli_execution(options):
     : param: options: arguments from parse.parse_args(args) (see parse_args function)
     """
     
-    #Create azure health object    
-    azure_healt_obj = AzureAppHealthChecks(url=options.url)
+    #Create web app health object    
+    webapp_healt_obj = WebAppHealthChecks(url=options.url)
 
     def collect_data():        
-        retrcode, msgdata = azure_healt_obj.check_status_data()
+        retrcode, msgdata = webapp_healt_obj.check_status_data()
         return retrcode, msgdata
     
     def check(retrcode):

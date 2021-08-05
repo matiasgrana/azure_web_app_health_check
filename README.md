@@ -1,24 +1,24 @@
 Description
 ===========
 
-Checks azure apps health.
+Checks web apps health.
 
-`VERSION  <azure_web_app_health_check/VERSION>`__
+`VERSION  <web_app_health_check/VERSION>`__
 
 Install
 =======
 
 Linux::
 
-    sudo pip3 install azure_web_app_health_check --upgrade
+    sudo pip3 install web_app_health_check --upgrade
 
 Also is possible to use::
 
-    sudo python3 -m pip install azure_web_app_health_check --upgrade
+    sudo python3 -m pip install web_app_health_check --upgrade
 
 On windows with python3.5::
 
-    pip install azure_web_app_health_check --upgrade
+    pip install web_app_health_check --upgrade
 
 For proxies add::
 
@@ -29,8 +29,8 @@ Usage
 
 Use the command line::
 
-    > azure_web_app_health_check --help
-      usage: azure_web_app_health_check [-h] [-u [URL]] [-e [EXTRA_ARGS]]
+    > web_app_health_check --help
+      usage: web_app_health_check [-h] [-u [URL]] [-e [EXTRA_ARGS]]
 
         optional arguments:
         -h, --help            show this help message and exit
@@ -45,7 +45,7 @@ Example usage
 
 Example use:
 
-    > azure_web_app_health_check -u "https://xxx/"
+    > web_app_health_check -u "https://xxx/"
 
 
 Nagios config
@@ -54,8 +54,8 @@ Nagios config
 Example command::
 
     define command{
-        command_name  azure_web_app_health_check
-        command_line  /usr/local/bin/azure_web_app_health_check -u "$ARG1$" --extra_args='$ARG6$'
+        command_name  web_app_health_check
+        command_line  /usr/local/bin/web_app_health_check -u "$ARG1$" --extra_args='$ARG6$'
     }
 
 Example service::
@@ -63,7 +63,7 @@ Example service::
     define service {
             host_name                       SERVERX
             service_description             service_name
-            check_command                   azure_web_app_health_check!http://url/
+            check_command                   web_app_health_check!http://url/
             use				                generic-service
             notes                           some useful notes
     }
