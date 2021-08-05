@@ -24,7 +24,7 @@ class WebAppHealthChecks:
             
         #Add tags to the URL
         url = self.url
-        import pdb; pdb.set_trace()
+       
         # requests doc http://docs.python-requests.org/en/v0.10.7/user/quickstart/#custom-headers
         r = requests.get(url=url, verify=False)
         
@@ -36,11 +36,9 @@ class WebAppHealthChecks:
         retrcode = OK
 		        #Create tuple with json and status code
         webapp_health_status = self.get_status_data()        
-        
-        import pdb; pdb.set_trace()
-             
+                           
         msgdata = ''
-        msgerror = '{:>10}'.format(webapp_health_status[0]['entries']['smartAccess_health_check']['description'])
+        msgerror = '{:>10}'.format(webapp_health_status[0]['entries']['process_health_check']['description'])
         retrperfdata = ''
         retrmsg = ''
         
