@@ -39,9 +39,7 @@ def parse_args(args):
                                      description='nagios plugin to check some url using curl and some other code')
 
     parser.add_argument('-u', '--url', dest='url', nargs='?', default=None, const=None,
-                        help='url to check \n')
-    parser.add_argument('-k', '--key', dest='key', nargs='?', default=None, const=None,
-                        help='key to access to azure app \n')                    
+                        help='url to check \n')              
     parser.add_argument('-e', '--extra_args', dest='extra_args', nargs='?', default='', const=None,
                             help='extra args to add to curl, see curl manpage  \n')
     
@@ -57,7 +55,7 @@ def cli_execution(options):
     """
     
     #Create azure health object    
-    azure_healt_obj = AzureAppHealthChecks(url=options.url, key=options.key)
+    azure_healt_obj = AzureAppHealthChecks(url=options.url)
 
     def collect_data():        
         retrcode, msgdata = azure_healt_obj.check_status_data()
@@ -82,13 +80,13 @@ def cli_execution(options):
     # Add summary       
     message['summary'] += data[1]
     # Add perfdata
-    # total = len(data)
-    #message['perfdata'] = curlnagiosobj.format_perfdata()    
-    # Print the message
-    # Print the message
-    
-    print("{summary}".format(
-        summary=message.get('summary')
+    total = len(data)
+    message['perfdata'] = "alerts={};1;2;0; ".format(total)      
+
+    # Print the message    
+    print("{summary}|{perfdata}".format(
+        summary=message.get('summary'),
+        perfdata=message.get('perfdata')
     ))
     # Exit with status code
     raise SystemExit(message['status'])

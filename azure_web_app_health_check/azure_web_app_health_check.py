@@ -14,24 +14,18 @@ UNKNOWN = 3
 urllib3.disable_warnings()
 
 class AzureAppHealthChecks:
-    def __init__(self, url, key):
+    def __init__(self, url):
         
         #initial
         self.url = url
-        self.key = key
-       
+               
 
     def get_status_data(self):
             
         #Add tags to the URL
         url = self.url
-        key = self.key
-
-        # requests doc http://docs.python-requests.org/en/v0.10.7/user/quickstart/#custom-headers
         
-        #Add key to URL
-        url = url + "/health?key=" + key        
-
+        # requests doc http://docs.python-requests.org/en/v0.10.7/user/quickstart/#custom-headers
         r = requests.get(url=url, verify=False)
         
         return r.json(), r.status_code
@@ -45,16 +39,13 @@ class AzureAppHealthChecks:
         azure_health_status = self.get_status_data()
         
         msgdata = ''
-        msgerror = 'Healthy'
+        msgerror = '{:>10}'.format(azure_health_status[0]['entries']['smartAccess_health_check']['description'])
         retrperfdata = ''
         retrmsg = ''
-        
+        import pdb; pdb.set_trace()
         #Validate Data
         if azure_health_status[0]['status'] != 'Healthy':
             retrcode = CRITICAL
-                        
-            if retrcode != 0:
-                msgerror += 'ERROR - Check your App Health'
 
         msgerror += msgdata
          
