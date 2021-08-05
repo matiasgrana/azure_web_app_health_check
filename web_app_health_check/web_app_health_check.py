@@ -38,7 +38,7 @@ class WebAppHealthChecks:
         webapp_health_status = self.get_status_data()        
                            
         msgdata = ''
-        msgerror = '{:>10}'.format(webapp_health_status[0]['entries']['process_health_check']['description'])
+        msgerror = '{:>10}'.format(webapp_health_status.get('entries').get('process_health_check').get('description', ''))           
         retrperfdata = ''
         retrmsg = ''
         
