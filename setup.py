@@ -17,6 +17,7 @@ def check_readme(file='README.rst'):
     :param file:
     :return:
     """
+    
     # Get the long description from the relevant file
     with open(file, encoding='utf-8') as f_object:
         readme_content = f_object.read()

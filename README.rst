@@ -37,7 +37,7 @@ Use the command line::
         -u [URL], --url [URL]
                               url to check 		
         -a [APP_NAME], --app_name [APP_NAME]
-                              app_name is the entry key where the description is located
+                              app_name is the key entry where the description is located
         -e [EXTRA_ARGS], --extra_args [EXTRA_ARGS]
                               extra args
 
@@ -49,14 +49,7 @@ Example use:
 
     > web_app_health_check -u "https://xxx/" -a process_app_name
 
-    status	"Healthy"
-    totalDuration	"00:00:02.4136092"
-    entries	
-        process_app_name	
-            data	{}
-            description	"Process health check was successful."
-            duration	"00:00:05.4106469"
-            
+    {"status":"Healthy","totalDuration":"00:00:02.4136092","entries":{"process_app_name":{"data":{},"description":"Process health check was successful.","duration":"00:00:02.4106469","status":"Healthy"}}}     
 
 Nagios config
 =============
@@ -79,3 +72,5 @@ Example service::
     }
 
 You can use ansible role that already has the installation and command: https://github.com/CoffeeITWorks/ansible_nagios4_server_plugins
+
+

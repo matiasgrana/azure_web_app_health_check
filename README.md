@@ -48,15 +48,8 @@ Example usage
 Example use:
 
     > web_app_health_check -u "https://xxx/" -a process_app_name
-
-    status	"Healthy"
-    totalDuration	"00:00:02.4136092"
-    entries	
-        process_app_name	
-            data	{}
-            description	"Process health check was successful."
-            duration	"00:00:05.4106469"
-            
+    
+    {"status":"Healthy","totalDuration":"00:00:02.4136092","entries":{"process_app_name":{"data":{},"description":"Process health check was successful.","duration":"00:00:02.4106469","status":"Healthy"}}}
 
 Nagios config
 =============
