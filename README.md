@@ -37,7 +37,7 @@ Use the command line::
         -u [URL], --url [URL]
                               url to check 		
         -a [APP_NAME], --app_name [APP_NAME]
-                              app_name is the key entry where the description is located
+                              app_name is the entry key where the description is located
         -e [EXTRA_ARGS], --extra_args [EXTRA_ARGS]
                               extra args
 
@@ -79,5 +79,3 @@ Example service::
     }
 
 You can use ansible role that already has the installation and command: https://github.com/CoffeeITWorks/ansible_nagios4_server_plugins
-
-
