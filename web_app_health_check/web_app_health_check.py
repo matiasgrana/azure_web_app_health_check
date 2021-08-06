@@ -14,16 +14,18 @@ UNKNOWN = 3
 urllib3.disable_warnings()
 
 class WebAppHealthChecks:
-    def __init__(self, url):
+    def __init__(self, url, app_name):
         
         #initial
         self.url = url
+        self.app_name = app_name
                
 
     def get_status_data(self):
             
         #Add tags to the URL
         url = self.url
+        app_name = self.app_name
        
         # requests doc http://docs.python-requests.org/en/v0.10.7/user/quickstart/#custom-headers
         r = requests.get(url=url, verify=False)
@@ -34,11 +36,11 @@ class WebAppHealthChecks:
 
         #Vars
         retrcode = OK
-		        #Create tuple with json and status code
-        webapp_health_status = self.get_status_data()        
-                           
+		#Create tuple with json and status code
+        webapp_health_status = self.get_status_data()       
+
         msgdata = ''
-        msgerror = '{:>10}'.format(webapp_health_status.get('entries').get('process_health_check').get('description', ''))           
+        msgerror = '{:>10}'.format(webapp_health_status[0].get('entries').get(self.app_name).get('description', ''))           
         retrperfdata = ''
         retrmsg = ''
         

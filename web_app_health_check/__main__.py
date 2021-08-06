@@ -40,6 +40,8 @@ def parse_args(args):
 
     parser.add_argument('-u', '--url', dest='url', nargs='?', default=None, const=None,
                         help='url to check \n')              
+    parser.add_argument('-a', '--app_name', dest='app_name', nargs='?', default=None, const=None,
+                        help='app_name is the key entry where the description is located\n')     
     parser.add_argument('-e', '--extra_args', dest='extra_args', nargs='?', default='', const=None,
                             help='extra args to add to curl, see curl manpage  \n')
     
@@ -55,7 +57,7 @@ def cli_execution(options):
     """
     
     #Create web app health object    
-    webapp_healt_obj = WebAppHealthChecks(url=options.url)
+    webapp_healt_obj = WebAppHealthChecks(url=options.url, app_name= options.app_name)
 
     def collect_data():        
         retrcode, msgdata = webapp_healt_obj.check_status_data()

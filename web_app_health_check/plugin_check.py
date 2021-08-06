@@ -4,13 +4,14 @@ import json
 import subprocess
 
 class curlCheck:
-    def __init__(self, URL, extra_args='', auth_args=''):
+    def __init__(self, URL, app_name, extra_args='', auth_args=''):
         """
         :param URL: provide url to get/put data.
         :param extra_args: any argument for curl command
         :param auth_args: normally used internally by the code to add HEADERS with authentication args.
         """
         self.url = URL
+        self.app_name = app_name
         self.extra_args = extra_args
         self.auth_args = auth_args
         
@@ -36,7 +37,7 @@ class curlCheck:
         """
         ### some code here
         ### or calling external modules
-        cmdline = "curl {} -k --fail -s -o /dev/null {} -w \\ {}  {}".format(self.url, self.extra_args, self.std_args, self.auth_args)
+        cmdline = "curl {} -k --fail -s -o /dev/null {} -w \\ {}  {}".format(self.url, self.app_name, self.extra_args, self.std_args, self.auth_args)
 
         retrcode, retroutput = subprocess.getstatusoutput(cmdline)  
 

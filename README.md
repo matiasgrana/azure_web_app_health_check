@@ -30,12 +30,14 @@ Usage
 Use the command line::
 
     > web_app_health_check --help
-      usage: web_app_health_check [-h] [-u [URL]] [-e [EXTRA_ARGS]]
+      usage: web_app_health_check [-h] [-u [URL]] [-a [APP_NAME]] [-e [EXTRA_ARGS]]
 
         optional arguments:
         -h, --help            show this help message and exit
         -u [URL], --url [URL]
                               url to check 		
+        -a [APP_NAME], --app_name [APP_NAME]
+                              app_name is the key entry where the description is located
         -e [EXTRA_ARGS], --extra_args [EXTRA_ARGS]
                               extra args
 
@@ -45,8 +47,16 @@ Example usage
 
 Example use:
 
-    > web_app_health_check -u "https://xxx/"
+    > web_app_health_check -u "https://xxx/" -a process_app_name
 
+    status	"Healthy"
+    totalDuration	"00:00:02.4136092"
+    entries	
+        process_app_name	
+            data	{}
+            description	"Process health check was successful."
+            duration	"00:00:05.4106469"
+            
 
 Nagios config
 =============
@@ -55,7 +65,7 @@ Example command::
 
     define command{
         command_name  web_app_health_check
-        command_line  /usr/local/bin/web_app_health_check -u "$ARG1$" --extra_args='$ARG6$'
+        command_line  /usr/local/bin/web_app_health_check -u "$ARG1$" -a "$ARG2$" --extra_args='$ARG3$'
     }
 
 Example service::
@@ -63,7 +73,7 @@ Example service::
     define service {
             host_name                       SERVERX
             service_description             service_name
-            check_command                   web_app_health_check!http://url/
+            check_command                   web_app_health_check!http://url/!process_app_name
             use				                generic-service
             notes                           some useful notes
     }
