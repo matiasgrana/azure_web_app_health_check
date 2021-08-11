@@ -82,7 +82,7 @@ def cli_execution(options):
     # Add summary       
     message['summary'] += data[1]
     # Add perfdata
-    import pdb; pdb.set_trace()
+  
     total = len(data)
     message['perfdata'] = "total_time={};1;0;0; ".format(total)      
 
