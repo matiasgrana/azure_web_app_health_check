@@ -3,7 +3,7 @@
 
 # Import required libs
 from .plugin_check import curlCheck
-from .web_app_health_check import WebAppHealthChecks
+from .webapp_health_check import WebAppHealthChecks
 import argparse
 import sys
 

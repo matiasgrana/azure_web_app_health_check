@@ -3,22 +3,22 @@ Description
 
 Checks web apps health.
 
-`VERSION  <web_app_health_check/VERSION>`__
+`VERSION  <webapp_health_check/VERSION>`__
 
 Install
 =======
 
 Linux::
 
-    sudo pip3 install web_app_health_check --upgrade
+    sudo pip3 install webapp_health_check --upgrade
 
 Also is possible to use::
 
-    sudo python3 -m pip install web_app_health_check --upgrade
+    sudo python3 -m pip install webapp_health_check --upgrade
 
 On windows with python3.5::
 
-    pip install web_app_health_check --upgrade
+    pip install webapp_health_check --upgrade
 
 For proxies add::
 
@@ -29,8 +29,8 @@ Usage
 
 Use the command line::
 
-    > web_app_health_check --help
-      usage: web_app_health_check [-h] [-u [URL]] [-a [APP_NAME]] [-e [EXTRA_ARGS]]
+    > webapp_health_check --help
+      usage: webapp_health_check [-h] [-u [URL]] [-a [APP_NAME]] [-e [EXTRA_ARGS]]
 
         optional arguments:
         -h, --help            show this help message and exit
@@ -47,7 +47,7 @@ Example usage
 
 Example use:
 
-    > web_app_health_check -u "https://xxx/" -a process_app_name
+    > webapp_health_check -u "https://xxx/" -a process_app_name
 
     {"status":"Healthy","totalDuration":"00:00:02.4136092","entries":{"process_app_name":{"data":{},"description":"Process health check was successful.","duration":"00:00:02.4106469","status":"Healthy"}}}     
 
@@ -57,8 +57,8 @@ Nagios config
 Example command::
 
     define command{
-        command_name  web_app_health_check
-        command_line  /usr/local/bin/web_app_health_check -u "$ARG1$" -a "$ARG2$" --extra_args='$ARG3$'
+        command_name  webapp_health_check
+        command_line  /usr/local/bin/webapp_health_check -u "$ARG1$" -a "$ARG2$" --extra_args='$ARG3$'
     }
 
 Example service::
@@ -66,7 +66,7 @@ Example service::
     define service {
             host_name                       SERVERX
             service_description             service_name
-            check_command                   web_app_health_check!http://url/!process_app_name
+            check_command                   webapp_health_check!http://url/!process_app_name
             use				                generic-service
             notes                           some useful notes
     }

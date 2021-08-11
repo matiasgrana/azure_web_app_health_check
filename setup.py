@@ -7,7 +7,7 @@ from setuptools import setup, find_packages
 import rstcheck
 
 
-mypackage_root_dir = 'web_app_health_check'
+mypackage_root_dir = 'webapp_health_check'
 
 # function to check a readme file
 def check_readme(file='README.rst'):
@@ -50,7 +50,7 @@ with open(readme_path, encoding='utf-8') as f:
 check_readme(readme_path)
 
 # Define setuptools specifications
-setup(name='web_app_health_check',
+setup(name='webapp_health_check',
       version=version,
       description='wen app health plugin',
       long_description=long_description,  # this is the file README.rst
@@ -62,7 +62,7 @@ setup(name='web_app_health_check',
           'Programming Language :: Python :: 3 :: Only',
           'Topic :: System :: Monitoring',
       ],
-      url='https://github.com/matiasgrana/web_app_health_check',
+      url='https://github.com/matiasgrana/webapp_health_check',
       author='Matias Graña',
       author_email='maicolmatiasg@gmail.com',
       license='MIT', # Choose your license
@@ -77,7 +77,7 @@ setup(name='web_app_health_check',
       entry_points={
           'console_scripts': [
               # http://python-packaging.readthedocs.io/en/latest/command-line-scripts.html
-              'web_app_health_check = web_app_health_check.__main__:main'
+              'webapp_health_check = webapp_health_check.__main__:main'
           ]
       },
       install_requires=requires, # we have already readed requirements.txt in line 30
