@@ -49,6 +49,11 @@ with open(readme_path, encoding='utf-8') as f:
 # when checking rst file you ensure it will be healthy to publish on pypi.org
 check_readme(readme_path)
 
+install_requires=[
+    'rstcheck',
+    'requests>=2.19.1'
+]
+
 # Define setuptools specifications
 setup(name='webapp_health_check',
       version=version,
@@ -85,3 +90,4 @@ setup(name='webapp_health_check',
       #tests_require=['pytest',
       #               'pytest-cov'],
       zip_safe=False)
+
