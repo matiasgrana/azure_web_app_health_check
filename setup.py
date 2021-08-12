@@ -32,9 +32,14 @@ def check_readme(file='README.rst'):
         print(msg)
 
 # Get requirements for this package
-here_path = path.abspath(path.dirname(__file__))
-with open(os.path.join(here_path, 'requirements.txt')) as f:
-    requires = [x.strip() for x in f if x.strip()]
+#here_path = path.abspath(path.dirname(__file__))
+#with open(os.path.join(here_path, 'requirements.txt')) as f:
+#    requires = [x.strip() for x in f if x.strip()]
+
+install_requires=[
+    'rstcheck',
+    'requests>=2.19.1'
+]
 
 # Get the version from VERSION file
 with open(os.path.join(mypackage_root_dir, 'VERSION')) as version_file:
@@ -49,10 +54,6 @@ with open(readme_path, encoding='utf-8') as f:
 # when checking rst file you ensure it will be healthy to publish on pypi.org
 check_readme(readme_path)
 
-install_requires=[
-    'rstcheck',
-    'requests>=2.19.1'
-]
 
 # Define setuptools specifications
 setup(name='webapp_health_check',
