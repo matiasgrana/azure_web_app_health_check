@@ -32,7 +32,7 @@ def check_readme(file='README.rst'):
         print(msg)
 
 # Get requirements for this package
-#here_path = path.abspath(path.dirname(__file__))
+here_path = path.abspath(path.dirname(__file__))
 #with open(os.path.join(here_path, 'requirements.txt')) as f:
 #    requires = [x.strip() for x in f if x.strip()]
 
@@ -86,7 +86,7 @@ setup(name='webapp_health_check',
               'webapp_health_check = webapp_health_check.__main__:main'
           ]
       },
-      install_requires=requires, # we have already readed requirements.txt in line 30
+      #install_requires=requires, # we have already readed requirements.txt in line 30
       # Use test_require  to add pytest requirements when using unit tests
       #tests_require=['pytest',
       #               'pytest-cov'],
