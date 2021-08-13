@@ -36,11 +36,6 @@ here_path = path.abspath(path.dirname(__file__))
 #with open(os.path.join(here_path, 'requirements.txt')) as f:
 #    requires = [x.strip() for x in f if x.strip()]
 
-install_requires=[
-    'rstcheck',
-    'requests>=2.19.1'
-]
-
 # Get the version from VERSION file
 with open(os.path.join(mypackage_root_dir, 'VERSION')) as version_file:
     version = version_file.read().strip()
@@ -68,7 +63,7 @@ setup(name='webapp_health_check',
           'Programming Language :: Python :: 3 :: Only',
           'Topic :: System :: Monitoring',
       ],
-      url='https://github.com/matiasgrana/webapp_health_check',
+      url='https://github.com/matiasgrana/web_app_health_check',
       author='Matias Graña',
       author_email='maicolmatiasg@gmail.com',
       license='MIT', # Choose your license
